@@ -1,5 +1,3 @@
-# galago-docker
-
 # OSIRRC Docker Image for Galago 
 
 [**Michael Zarozinski**](https://github.com/mzarozinski)
