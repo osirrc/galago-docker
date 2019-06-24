@@ -12,3 +12,5 @@ This image is based on the Indri image by [**Claudia Hauff**](https://github.com
 ## Quick Start
 
 First, clone the [`jig`](https://github.com/osirrc/jig) and follow its setup instructions - in particular, do not forget to also clone and install `trec_eval` inside the `jig` directory!
+
+TODO : needs more documentation
