@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+
+# Michael Z 6/2019
+# based on : https://github.com/osirrc/indri-docker
+
+import argparse
+import json
+import subprocess
+
+print("Searching ...")
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--json", type=json.loads, required=True, help="the json input")
+
+args, unknown = parser.parse_known_args()
+
+collection_name = args.json["collection"]["name"]
+topic_path = args.json["topic"]["path"]
+top_k = int(args.json["top_k"])
+options = args.json["opts"]
+out_file_name = args.json["opts"]["out_file_name"]
+
+if collection_name.lower() == "robust04":
+    subprocess.run("/searchRobust04.sh {} {} {} {} {}".format(collection_name, topic_path, top_k, out_file_name, options), shell=True)
+else:
+    print("Unknown collection: " + collection_name)
