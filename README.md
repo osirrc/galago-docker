@@ -16,9 +16,6 @@ This image is based on the Indri image by [**Claudia Hauff**](https://github.com
 
 First, clone the [`jig`](https://github.com/osirrc/jig) and follow its setup instructions - in particular, do not forget to also clone and install `trec_eval` inside the `jig` directory.
 
--------------------------------
-
-
 The following `jig` command can be used to index TREC disks 4/5 for `robust04`:
 
 ```
