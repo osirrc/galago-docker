@@ -20,7 +20,20 @@ top_k = int(args.json["top_k"])
 options = args.json["opts"]
 out_file_name = args.json["opts"]["out_file_name"]
 
+galago_options = ''
+if 'search_options' in args.json["opts"]:
+    # any parameters to Galago are passed in this field, comma seperated.
+    # it would be ideal just to pass them in as something like:
+    # search_options="--mu:1000"
+    # but argparse will think --mu is a parameter.
+    # Note that we also can't use "mu=1000", have to do: "mu:1000"
+    # because of the way the "opts" param is split.
+    params = args.json["opts"]["search_options"].split(',')
+    for param in params:
+        galago_options += ' --' + param.replace(':', '=')
+
+
 if collection_name.lower() == "robust04":
-    subprocess.run("/searchRobust04.sh {} {} {} {} {}".format(collection_name, topic_path, top_k, out_file_name, options), shell=True)
+    subprocess.run("/searchRobust04.sh {} {} {} {} {}".format(collection_name, topic_path, top_k, out_file_name, galago_options), shell=True)
 else:
     print("Unknown collection: " + collection_name)

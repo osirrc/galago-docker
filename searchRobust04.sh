@@ -8,6 +8,7 @@ TOPICFILE=$2
 TOPK=$3
 OUTFILENAME=$4
 RESFILE=/output/$4
+GALAGO_PARAMS=$5
 
 BATCH_SEARCH_QUERIES="./batch-search.json"
 
@@ -16,4 +17,4 @@ python3 /formatTopics.py "${TOPICFILE}" "${BATCH_SEARCH_QUERIES}"
 
 #start searching
 echo "ROBUST04 ... Processing topics"
-/work/galago-3.15-bin/bin/galago batch-search "${BATCH_SEARCH_QUERIES}" --index="${INDEX}"  --requested=${TOPK}  "${OPTIONS}"  >> ${RESFILE}
+/work/galago-3.15-bin/bin/galago batch-search "${BATCH_SEARCH_QUERIES}" --index="${INDEX}"  --requested=${TOPK}  "${GALAGO_PARAMS}"  > ${RESFILE}
